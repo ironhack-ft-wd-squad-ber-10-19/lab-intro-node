@@ -20,7 +20,8 @@
     "url": "https://github.com/ironhack/lab-intro-node/issues"
   },
   "homepage": "https://github.com/ironhack/lab-intro-node#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "mocha": "^6.2.2"
   }
 }
