@@ -1,47 +1,39 @@
 class SortedList {
   constructor() {
-    this.items = [];
-    this.length = this.items.length;
-  }
-  add(x) {
-    this.items.push(x);
-    this.length++;
-  }
+    this.items = []
+    this.length = this.items.length
+   }
+  add(item) {
+    this.items.push(item);
+    this.length++
+   }
   get(pos) {
-    if (pos < this.length) {
-      this.items.sort((a, b) => a - b)
-      return this.items[pos];
+    if(pos < 0 || pos > this.length){
+      throw new Error("OutOfBounds")
     }
-    throw new Error("OutOfBounds");
-  }
+    this.items.sort((a, b) => a - b)
+    return this.items[pos]
+   }
   max() {
-    if (this.length > 0) {
-      return Math.max(...this.items);
-    }
-    throw new Error("EmptySortedList");
-  }
+    if (this.length === 0) throw new Error("EmptySortedList")
+    return Math.max(...this.items)
+   }
   min() {
-    if (this.length > 0) {
-      return Math.min(...this.items);
-    }
-    throw new Error("EmptySortedList");
-  }
-  
-
-  sum() {
-    if (this.length > 0) {
-      const sumi = this.items.reduce((acc, val) => acc + val);
-      return sumi;
-    }
-    return 0;
-  }
-
+    if (this.length === 0) throw new Error("EmptySortedList")
+    return Math.min(...this.items)
+   }
   average() {
-    if (this.length > 0) {
-      return this.sum() / this.length;
-    }
-    throw new Error("EmptySortedList");
+    if (this.length === 0) throw new Error("EmptySortedList")
+    return this.sum() / this.length 
+    
   }
-}
+  sum() { 
+    if (this.length === 0) return 0
+    return this.items.reduce((acc,val) => {
+      acc += val
+      return acc
+    },0) 
+  }
+};
 
 module.exports = SortedList;
